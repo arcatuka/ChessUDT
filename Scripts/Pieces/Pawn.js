@@ -1,16 +1,5 @@
 import Pieces from "./pieces.js"
 class Pawn extends Pieces{
-    // constructor(UnitName,player,color){
-    //     this.info=
-    //     {
-    //         UnitName:UnitName,
-    //         color: color,
-    //         isTaken : false,
-    //         urlUnit:null,
-    //     }
-    //     this.player = player;
-        
-    // }
     movement()
     {
         console.log("Pawn is Moving");
@@ -20,3 +9,6 @@ class Pawn extends Pieces{
         console.log("Pawn is taking a unit");
     }
 }
+
+var a = new Pawn("hello","k","da");
+console.log(a.player);
