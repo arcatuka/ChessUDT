@@ -1,7 +1,7 @@
 class Piece {
-    constructor(name, color, element) {
+    constructor(name, color) {
         this.name = name
         this.color = color
-        this.element = element
+        this.url = `./assets/images/pieces/${this.color}_${this.name}.png`
     }
 }

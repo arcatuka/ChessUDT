@@ -1,9 +1,8 @@
 class Square {
-    constructor(x, y, color, element, piece) {
+    constructor(x, y, color, piece) {
         this.x = x
         this.y = y
         this.color = color
-        this.element = element
         this.piece = piece
     }
 }
