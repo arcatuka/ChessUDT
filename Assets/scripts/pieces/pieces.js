@@ -1,13 +1,18 @@
 class Piece {
-    constructor(name, color) {
+    constructor(colIndex, rowIndex, name, color) {
+        this.colIndex = colIndex
+        this.rowIndex = rowIndex
         this.name = name
         this.color = color
         this.pieceElement = document.createElement('img') 
     }
 
-    createPieceElement() {
+    designPieceElement() {
         this.pieceElement.classList.add('piece')
         this.pieceElement.src = `./assets/images/pieces/${this.color}_${this.name}.png`
-        return this.pieceElement
+    }
+
+    findMove() {
+        
     }
 }

@@ -1,3 +1,5 @@
 const board = new Board()
-board.init()
-board.initUI()
+board.createObjectsAndElements()
+board.renderElements()
+board.addFindValieMoveEvent()
+board.addPieceMoveEvent()

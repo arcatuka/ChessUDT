@@ -5,20 +5,23 @@ class Board {
         this.rowList = []
     }
 
-    init() {
+    createObjectsAndElements() {
         // Create squares object and pieces object
         for (let rowIndex = 0 ; rowIndex < this.rows ; ++rowIndex) {
             const rowObject = new Row()
+            rowObject.designRowElement()
             for (let colIndex = 0 ; colIndex < this.cols ; ++colIndex) {
                 const squareColor  = (colIndex + rowIndex) % 2 === 0 ? 'light' : 'dark'
                 const squareObject = new Square(squareColor, null)
-                
+                squareObject.designSquareElement()
                 if (rowIndex === 1) {
-                    squareObject.piece = new Pawn('pawn', 'black')
+                    squareObject.piece = new Pawn(colIndex, rowIndex, 'pawn', 'black')
+                    squareObject.piece.designPieceElement()
                 }
 
                 if (rowIndex === 6) {
-                    squareObject.piece = new Pawn('pawn', 'white')
+                    squareObject.piece = new Pawn(colIndex, rowIndex, 'pawn', 'white')
+                    squareObject.piece.designPieceElement()
                 }
                 rowObject.colList.push(squareObject)
             }
@@ -26,60 +29,114 @@ class Board {
         }
 
         // Create black rook
-        this.rowList[0].colList[0].piece = new Rook('rook', 'black')
-        this.rowList[0].colList[7].piece = new Rook('rook', 'black')
+        this.rowList[0].colList[0].piece = new Rook(0, 0, 'rook', 'black')
+        this.rowList[0].colList[0].piece.designPieceElement()
+
+        this.rowList[0].colList[7].piece = new Rook(7, 0, 'rook', 'black')
+        this.rowList[0].colList[7].piece.designPieceElement()
 
         // Create white rook
-        this.rowList[7].colList[0].piece = new Rook('rook', 'white')
-        this.rowList[7].colList[7].piece = new Rook('rook', 'white')
+        this.rowList[7].colList[0].piece = new Rook(0, 7, 'rook', 'white')
+        this.rowList[7].colList[0].piece.designPieceElement()
+
+        this.rowList[7].colList[7].piece = new Rook(7, 7, 'rook', 'white')
+        this.rowList[7].colList[7].piece.designPieceElement()
 
         // Create black knight
-        this.rowList[0].colList[1].piece = new Knight('knight', 'black')
-        this.rowList[0].colList[6].piece = new Knight('knight', 'black')
+        this.rowList[0].colList[1].piece = new Knight(1, 0, 'knight', 'black')
+        this.rowList[0].colList[1].piece.designPieceElement()
+
+        this.rowList[0].colList[6].piece = new Knight(6, 0, 'knight', 'black')
+        this.rowList[0].colList[6].piece.designPieceElement()
 
         // Create white knight
-        this.rowList[7].colList[1].piece = new Knight('knight', 'white')
-        this.rowList[7].colList[6].piece = new Knight('knight', 'white')
+        this.rowList[7].colList[1].piece = new Knight(1, 7, 'knight', 'white')
+        this.rowList[7].colList[1].piece.designPieceElement()
+
+        this.rowList[7].colList[6].piece = new Knight(6, 7, 'knight', 'white')
+        this.rowList[7].colList[6].piece.designPieceElement()
         
         // Create black bishop
-        this.rowList[0].colList[2].piece = new Bishop('bishop', 'black')
-        this.rowList[0].colList[5].piece = new Bishop('bishop', 'black')
+        this.rowList[0].colList[2].piece = new Bishop(2, 0, 'bishop', 'black')
+        this.rowList[0].colList[2].piece.designPieceElement()
+
+        this.rowList[0].colList[5].piece = new Bishop(5, 0, 'bishop', 'black')
+        this.rowList[0].colList[5].piece.designPieceElement()
 
         // Create white bishop
-        this.rowList[7].colList[2].piece = new Bishop('bishop', 'white')
-        this.rowList[7].colList[5].piece = new Bishop('bishop', 'white')
+        this.rowList[7].colList[2].piece = new Bishop(2, 7, 'bishop', 'white')
+        this.rowList[7].colList[2].piece.designPieceElement()
+
+        this.rowList[7].colList[5].piece = new Bishop(5, 7, 'bishop', 'white')
+        this.rowList[7].colList[5].piece.designPieceElement()
 
         // Create queen
-        this.rowList[0].colList[3].piece = new Queen('queen', 'black')
-        this.rowList[7].colList[3].piece = new Queen('queen', 'white')
+        this.rowList[0].colList[3].piece = new Queen(3, 0, 'queen', 'black')
+        this.rowList[0].colList[3].piece.designPieceElement()
+
+        this.rowList[7].colList[3].piece = new Queen(3, 7, 'queen', 'white')
+        this.rowList[7].colList[3].piece.designPieceElement()
 
         // Create king
-        this.rowList[0].colList[4].piece = new King('king', 'black')
-        this.rowList[7].colList[4].piece = new King('king', 'white')
+        this.rowList[0].colList[4].piece = new King(4, 0, 'king', 'black')
+        this.rowList[0].colList[4].piece.designPieceElement()
+
+        this.rowList[7].colList[4].piece = new King(4, 7, 'king', 'white')
+        this.rowList[7].colList[4].piece.designPieceElement()
     }
 
-    initUI() {
-        // Create html file
+    renderElements() {
         const boardElement = document.getElementById('chess-board')
         for (let rowIndex = 0 ; rowIndex < this.rows ; ++rowIndex) {
             const rowObject = this.rowList[rowIndex]
-            const rowElement = rowObject.createRowElement()
-            boardElement.appendChild(rowElement)
+            const rowElement = rowObject.rowElement
 
             for (let colIndex = 0 ; colIndex < this.cols ; ++colIndex) {
-                // Create square element
                 const squareObject = rowObject.colList[colIndex]
-                const squareElement = squareObject.createSquareElement()
-                rowElement.appendChild(squareElement)
-
-                if (squareObject.piece !== null) {
-                    // Create piece element
-                    const pieceElment = squareObject.piece.createPieceElement()
-                    squareElement.appendChild(pieceElment)
+                const squareElement = squareObject.squareElement
+                const pieceOject = squareObject.piece
+                if (pieceOject !== null) {
+                    const pieceElement = pieceOject.pieceElement
+                    squareElement.appendChild(pieceElement)
                 }
                 rowElement.appendChild(squareElement)
             }
             boardElement.appendChild(rowElement)
+        }
+        
+    }
+
+    addFindValieMoveEvent() {
+        const pieceElementList = document.getElementsByClassName("piece")
+        const rowList = this.rowList
+        for (let i = 0 ; i < pieceElementList.length ; ++i) {
+            pieceElementList[i].addEventListener('click', function(event) {
+                const squareElement = event.target.parentElement
+                const pieceObject = findSquareObject(rowList, squareElement).piece
+                sessionStorage.setItem('curentPieceIndex', `[${pieceObject.rowIndex},${pieceObject.colIndex}]`)
+                pieceObject.findMove(rowList)
+            })
+        }
+    }
+
+    addPieceMoveEvent() {
+        const squareElementList = document.getElementsByClassName("square")
+        const rowList = this.rowList
+        for (let i = 0 ; i < squareElementList.length ; ++i) {
+            squareElementList[i].addEventListener('click', function(event) {
+                const squareElement = event.target
+                if (squareElement.style.backgroundColor === 'red') {
+                    const squareObject = findSquareObject(rowList, squareElement)
+                    const currentPieceIndex = JSON.parse(sessionStorage.getItem('curentPieceIndex'))
+                    const rowIndex = currentPieceIndex[0]
+                    const colIndex = currentPieceIndex[1]
+
+                    squareObject.piece = rowList[rowIndex].colList[colIndex].piece
+                    rowList[rowIndex].colList[colIndex].piece = null
+                    board.renderElements()
+                }
+              
+            })
         }
     }
 }

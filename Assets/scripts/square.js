@@ -5,8 +5,7 @@ class Square {
         this.squareElement = document.createElement('div')
     }
 
-    createSquareElement() {
+    designSquareElement() {
         this.squareElement.classList.add('square', `${this.color}-square`)
-        return this.squareElement
     }
 }
