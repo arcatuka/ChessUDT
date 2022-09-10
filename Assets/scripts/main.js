@@ -1,3 +1,3 @@
 const board = new Board()
-board.Init()
-board.InitUI()
+board.init()
+board.initUI()
