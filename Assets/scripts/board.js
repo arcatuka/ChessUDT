@@ -11,7 +11,7 @@ class Board {
             const rowObject = new Row()
             rowObject.designRowElement()
             for (let colIndex = 0 ; colIndex < this.cols ; ++colIndex) {
-                const squareColor  = (colIndex + rowIndex) % 2 === 0 ? 'light' : 'dark'
+                const squareColor  = (colIndex + rowIndex) % 2 === 0 ? '#faf5de' : '#e1dbb5'
                 const squareObject = new Square(squareColor, null)
                 squareObject.designSquareElement()
                 if (rowIndex === 1) {
@@ -83,6 +83,8 @@ class Board {
 
         this.rowList[7].colList[4].piece = new King(4, 7, 'king', 'white')
         this.rowList[7].colList[4].piece.designPieceElement()
+
+        return this.rowList
     }
 
     renderElements() {
@@ -94,6 +96,8 @@ class Board {
             for (let colIndex = 0 ; colIndex < this.cols ; ++colIndex) {
                 const squareObject = rowObject.colList[colIndex]
                 const squareElement = squareObject.squareElement
+                squareElement.style.backgroundColor = squareObject.color
+                console.log
                 const pieceOject = squareObject.piece
                 if (pieceOject !== null) {
                     const pieceElement = pieceOject.pieceElement
@@ -102,41 +106,6 @@ class Board {
                 rowElement.appendChild(squareElement)
             }
             boardElement.appendChild(rowElement)
-        }
-        
-    }
-
-    addFindValieMoveEvent() {
-        const pieceElementList = document.getElementsByClassName("piece")
-        const rowList = this.rowList
-        for (let i = 0 ; i < pieceElementList.length ; ++i) {
-            pieceElementList[i].addEventListener('click', function(event) {
-                const squareElement = event.target.parentElement
-                const pieceObject = findSquareObject(rowList, squareElement).piece
-                sessionStorage.setItem('curentPieceIndex', `[${pieceObject.rowIndex},${pieceObject.colIndex}]`)
-                pieceObject.findMove(rowList)
-            })
-        }
-    }
-
-    addPieceMoveEvent() {
-        const squareElementList = document.getElementsByClassName("square")
-        const rowList = this.rowList
-        for (let i = 0 ; i < squareElementList.length ; ++i) {
-            squareElementList[i].addEventListener('click', function(event) {
-                const squareElement = event.target
-                if (squareElement.style.backgroundColor === 'red') {
-                    const squareObject = findSquareObject(rowList, squareElement)
-                    const currentPieceIndex = JSON.parse(sessionStorage.getItem('curentPieceIndex'))
-                    const rowIndex = currentPieceIndex[0]
-                    const colIndex = currentPieceIndex[1]
-
-                    squareObject.piece = rowList[rowIndex].colList[colIndex].piece
-                    rowList[rowIndex].colList[colIndex].piece = null
-                    board.renderElements()
-                }
-              
-            })
         }
     }
 }

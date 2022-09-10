@@ -23,14 +23,6 @@ body {
     border: 1px solid black;
 }
 
-.light-square {
-    background-color: #faf5de;
-}
-
-.dark-square {
-    background-color: #e1dbb5;
-}
-
 .piece {
     width: 70px;
     height: 70px

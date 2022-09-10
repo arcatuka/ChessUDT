@@ -1,5 +1,3 @@
 const board = new Board()
-board.createObjectsAndElements()
+const boardRowList = board.createObjectsAndElements()
 board.renderElements()
-board.addFindValieMoveEvent()
-board.addPieceMoveEvent()
