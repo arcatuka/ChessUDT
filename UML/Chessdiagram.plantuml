@@ -1,0 +1,210 @@
+@startuml class
+abstract class Piece {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : PlayerColor
+    + pieceElement : DOM
+    - availableMove : Int[][]
+
+    # constructor(colIndex, rowIndex, name, color): Piece
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+}
+
+class Pawn {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : String
+    + pieceElement : DOM
+    + isFirstMove : Boolean
+    - availableMove : Int[][]
+
+    # constructor(colIndex, rowIndex, name, color): Pawn
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+    + handleLeveling(rowList) : Void
+}
+
+class Bishop {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : String
+    + pieceElement : DOM
+    - availableMove : Int[][]
+
+    # constructor(colIndex, rowIndex, name, color): Bishop
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+    - findValidMoveOnLeftDiagonal(rowList) : Square[]
+    - findValidMoveOnRightDiagonal(rowList) : Square[]  
+    - validateMoveRange(squareList, pieceIndex) : Square[] //
+
+}
+
+class King {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : String
+    + pieceElement : DOM
+    + isFirstMove : Boolean
+    - availableMove : Int[][]
+
+    # constructor(colIndex, rowIndex, name, color): King
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+    - handleCastling(squareList) : Void
+    - checkPiecesInBetween(squareList) : Boolean
+    - checkRookFirstMove(rook) : Boolean
+}
+
+class Rook {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : String
+    + pieceElement : DOM
+    + isFirstMove : Boolean
+    
+    # constructor(colIndex, rowIndex, name, color): Rook
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+    - findValidMoveOnRow(rowList) : Square[]
+    - findValidMoveOnCol(rowList) : Square[]
+    - validateMoveRange(squareList, pieceIndex) : Square[] //
+}
+
+class Knight {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : String
+    + pieceElement : DOM
+    - availableMove : Int[][]
+
+    # constructor(colIndex, rowIndex, name, color): Knight
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+}
+
+class Queen {
+    + colIndex : Int
+    + rowIndex : Int
+    + name : String
+    + color : String
+    + pieceElement : DOM
+    - availableMove : Int[][]
+
+    # constructor(colIndex, rowIndex, name, color): Queen
+    + renderPieceElement() : DOM
+    + destroyPieceElement() : Void
+    + findValidMove(rowList) : Square[]
+    - findValidMoveOnLeftDiagonal(rowList) : Square[]
+    - findValidMoveOnRightDiagonal(rowList) : Square[]  
+    - findValidMoveOnRow(rowList) : Square[]
+    - findValidMoveOnCol(rowList) : Square[]
+    - validateMoveRange(squareList, pieceIndex) : Square[] //
+}
+
+class Square {
+    + colIndex : Int
+    + rowIndex : Int
+    + color : SquareDefaultColor
+    + piece : Piece
+    + squareElement : DOM
+
+    + constructor(index, color, name): Square
+    + renderSquareElement() : DOM
+    + changeSquareElementColor(color) : Void
+}
+
+class Row {
+    + colList : Square[]
+    + rowElement : DOM
+
+    + constructor(): Row
+    + renderRowElement() : DOM
+}
+
+class Board {
+    - cols : Int
+    - rows : Int
+    - currentPieceSelected : Piece
+    + rowList : Row[]
+
+    + constructor() : Board
+    + initialize() : Void
+    + renderChessBoard() : Void
+    + addMoveEvent() : Void
+    - movePiece(oldCoordinate, newCoordinate) : Void
+    - changeValidSquaresColor(squareList) : Void
+    - handlePieceSelected(piece): Void
+}
+
+class Game {
+    + currentPlayer : Player
+    - board : Board
+
+    + constructor(currentPlayer): Game
+    + initialize() : Void
+    + newGame() : Void
+    + restartGame() : Void
+    + handlePlayerTurn(player) : Void
+}
+
+class Player {
+    + color: PlayerColor
+
+    + constructor(color): Player
+}
+
+class LevelUpOption {
+    + pawn : Pawn
+    + optionsContainerElement : DOM
+    + optionNameList : String[]
+    + optionElementList : DOM[]
+
+    + renderOptionsElement()
+    + addLevelingEvent()
+    - createNewPiece(name, pawn, rowList)
+}
+
+enum PlayerColor {
+    Black
+    White
+}
+
+enum SquareDefaultColor {
+    CitrineWhite
+    GrainBrown
+}
+
+Piece <|-- Pawn
+Piece <|-- Bishop
+Piece <|-- King
+Piece <|-- Rook
+Piece <|-- Knight
+Piece <|-- Queen
+LevelUpOption o-- Pawn
+
+Game "1" *-- "2" Player
+Game *-- Board
+Player "2" o-- "1" Board
+Board "1" *-- "8" Row
+Row "1" *-- "8" Square
+Square "1" *-- "0..1"Piece
+
+PlayerColor - Player
+Square - SquareDefaultColor
+PlayerColor - Piece
+
+@enduml
