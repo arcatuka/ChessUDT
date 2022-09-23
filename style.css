@@ -14,16 +14,29 @@ body {
     border: 1px solid black;
 }
 
-.square {
-    width: 75px;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.square:hover {
+    cursor: pointer;
+}
+
+#options-container {
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 70px;
+    background-color: #ddd;
+    width: 70px;
+    height: 280px;
     border: 1px solid black;
 }
 
-.piece {
+
+#options-container img {
     width: 70px;
-    height: 70px
+    height: 70px;
+    display: block;
+}
+
+#options-container img:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
 }

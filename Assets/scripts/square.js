@@ -1,26 +1,27 @@
 class Square {
-    constructor(color, piece) {
+    constructor(colIndex, rowIndex, color, piece) {
+        this.colIndex = colIndex
+        this.rowIndex = rowIndex
         this.color = color
         this.piece = piece
         this.squareElement = document.createElement('div')
     }
 
-    designSquareElement() {
+    renderSquareElement() {
         this.squareElement.classList.add('square')
         this.squareElement.style.backgroundColor = this.color
-        this.squareElement.addEventListener('click', function(event) {
-            const squareElement = event.target
-            if (squareElement.style.backgroundColor === 'red') {
-                const squareObject = findSquareObject(boardRowList, squareElement)
-                const currentPieceIndex = JSON.parse(sessionStorage.getItem('curentPieceIndex'))
-                const rowIndex = currentPieceIndex[0]
-                const colIndex = currentPieceIndex[1]
+        this.squareElement.attributes.data = this
+        this.squareElement.style.width = '75px'
+        this.squareElement.style.height = '75px'
+        this.squareElement.style.display = 'flex'
+        this.squareElement.style.justifyContent = 'center'
+        this.squareElement.style.alignItems = 'center'
+        this.squareElement.style.border = '1px solid black'
+        this.squareElement.style.position = 'relative'
+        return this.squareElement
+    }
 
-                squareObject.piece = boardRowList[rowIndex].colList[colIndex].piece
-                boardRowList[rowIndex].colList[colIndex].piece = null
-                board.renderElements()
-            }
-          
-        })
+    changeSquareElementColor(color) {
+        this.squareElement.style.backgroundColor = color
     }
 }

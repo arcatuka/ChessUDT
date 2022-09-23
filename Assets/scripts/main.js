@@ -1,3 +1,3 @@
-const board = new Board()
-const boardRowList = board.createObjectsAndElements()
-board.renderElements()
+const game = new Game()
+const move = new Move()
+game.newGame()

@@ -169,6 +169,7 @@ class LevelUpOption {
     + optionNameList : String[]
     + optionElementList : DOM[]
 
+    + constructor(pawn) : LevelUpOption
     + renderOptionsElement()
     + addLevelingEvent()
     - createNewPiece(name, pawn, rowList)
