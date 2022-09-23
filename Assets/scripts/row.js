@@ -4,9 +4,15 @@ class Row {
         this.rowElement = document.createElement('div')
     }
 
-    createRowElement() {
-        this.rowElement.classList.add('row')
+    // designRowElement() {
+    //     this.rowElement.classList.add('row')
+    //     this.rowElement.style.display = 'flex'
+    // }
+
+    renderRowElement() {
         this.rowElement.style.display = 'flex'
         return this.rowElement
     }
+
+    
 }

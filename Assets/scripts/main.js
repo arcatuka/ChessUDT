@@ -1,3 +1,5 @@
 const board = new Board()
-board.init()
-board.initUI()
+const boardRowList = board.initialize()
+board.renderChessBoard()
+board.addPiecesChess()
+board.renderElements()
