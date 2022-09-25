@@ -43,19 +43,19 @@ class Board {
         // this.rowList[7].colList[7].piece = new Rook(7, 7, 'rook', 'white')
         // this.rowList[7].colList[7].piece.renderPieceElement()
 
-        // // Create black knight
-        // this.rowList[0].colList[1].piece = new Knight(1, 0, 'knight', 'black')
-        // this.rowList[0].colList[1].piece.renderPieceElement()
+        //Create black knight
+        this.rowList[0].colList[1].piece = new Knight(1, 0, 'knight', 'black')
+        this.rowList[0].colList[1].piece.renderPieceElement()
 
-        // this.rowList[0].colList[6].piece = new Knight(6, 0, 'knight', 'black')
-        // this.rowList[0].colList[6].piece.renderPieceElement()
+        this.rowList[0].colList[6].piece = new Knight(6, 0, 'knight', 'black')
+        this.rowList[0].colList[6].piece.renderPieceElement()
 
-        // // Create white knight
-        // this.rowList[7].colList[1].piece = new Knight(1, 7, 'knight', 'white')
-        // this.rowList[7].colList[1].piece.renderPieceElement()
+        // Create white knight
+        this.rowList[7].colList[1].piece = new Knight(1, 7, 'knight', 'white')
+        this.rowList[7].colList[1].piece.renderPieceElement()
 
-        // this.rowList[7].colList[6].piece = new Knight(6, 7, 'knight', 'white')
-        // this.rowList[7].colList[6].piece.renderPieceElement()
+        this.rowList[7].colList[6].piece = new Knight(6, 7, 'knight', 'white')
+        this.rowList[7].colList[6].piece.renderPieceElement()
         
         // // Create black bishop
         // this.rowList[0].colList[2].piece = new Bishop(2, 0, 'bishop', 'black')
@@ -79,11 +79,11 @@ class Board {
         // this.rowList[7].colList[3].piece.renderPieceElement()
 
         // Create king
-        this.rowList[0].colList[4].piece = new King(4, 0, 'king', 'black')
-        this.rowList[0].colList[4].piece.renderPieceElement()
+        // this.rowList[0].colList[4].piece = new King(4, 0, 'king', 'black')
+        // this.rowList[0].colList[4].piece.renderPieceElement()
 
-        this.rowList[7].colList[4].piece = new King(4, 7, 'king', 'white')
-        this.rowList[7].colList[4].piece.renderPieceElement()
+        // this.rowList[7].colList[4].piece = new King(4, 7, 'king', 'white')
+        // this.rowList[7].colList[4].piece.renderPieceElement()
 
         return this.rowList
     }
