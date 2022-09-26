@@ -200,7 +200,6 @@ Piece <|-- King
 Piece <|-- Rook
 Piece <|-- Knight
 Piece <|-- Queen
-Move - Piece
 LevelUpOption o-- Pawn
 
 Game "1" *-- "2" Player
