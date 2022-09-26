@@ -1,4 +1,5 @@
 class Queen extends Piece {
+<<<<<<< HEAD
     constructor(colIndex, rowIndex, name, color) {
         super(colIndex, rowIndex, name, color)
         this.availableMove = []
@@ -15,10 +16,23 @@ class Queen extends Piece {
 
     }
     
+=======
+    findValidMoveOnLeftDiagonal(rowList) {
+
+    }
+
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     findValidMoveOnRightDiagonal(rowList) {
 
     }
 
+<<<<<<< HEAD
+=======
+    validateMoveRange(squareList,pieceIndex) {
+        
+    }
+
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     findValidMoveOnRow(rowList) {
 
     }
@@ -28,6 +42,10 @@ class Queen extends Piece {
     }
 
     validateMoveRange(squareList, pieceIndex) {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     }
 }

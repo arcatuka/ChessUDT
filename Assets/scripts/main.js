@@ -1,3 +1,8 @@
 const game = new Game()
 const move = new Move()
 game.newGame()
+const board = new Board()
+const boardRowList = board.initialize()
+board.renderChessBoard()
+board.addPiecesChess()
+board.renderElements()

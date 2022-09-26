@@ -14,6 +14,7 @@ body {
     border: 1px solid black;
 }
 
+<<<<<<< HEAD
 .square:hover {
     cursor: pointer;
 }
@@ -40,3 +41,5 @@ body {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.4);
 }
+=======
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835

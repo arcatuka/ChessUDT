@@ -1,0 +1,21 @@
+class Game {
+    constructor(currentPlayer) {
+        
+    }
+
+    initialize() {
+
+    }
+
+    newGame() {
+
+    }
+
+    restartGame() {
+
+    }
+
+    handlePlayerTurn() {
+        
+    }
+}

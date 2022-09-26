@@ -1,4 +1,5 @@
 class Rook extends Piece {
+<<<<<<< HEAD
     constructor(colIndex, rowIndex, name, color) {
         super(colIndex, rowIndex, name, color)
         this.isFirstMove = true
@@ -8,6 +9,8 @@ class Rook extends Piece {
 
     }
 
+=======
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     findValidMoveOnRow(rowList) {
 
     }
@@ -17,6 +20,10 @@ class Rook extends Piece {
     }
 
     validateMoveRange(squareList, pieceIndex) {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     }
 }

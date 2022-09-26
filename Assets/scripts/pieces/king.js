@@ -1,4 +1,5 @@
 class King extends Piece {
+<<<<<<< HEAD
     constructor(colIndex, rowIndex, name, color) {
         super(colIndex, rowIndex, name, color)
         this.isFirstMove = true
@@ -11,6 +12,8 @@ class King extends Piece {
         
     }
 
+=======
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     handleCastling(squareList) {
 
     }
@@ -19,7 +22,12 @@ class King extends Piece {
 
     }
 
+<<<<<<< HEAD
     checkRookFirstMove(squareObject) {
 
+=======
+    checkRookFirstMove(rook) {
+        
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     }
 }
