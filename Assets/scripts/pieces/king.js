@@ -1,5 +1,4 @@
 class King extends Piece {
-<<<<<<< HEAD
     constructor(colIndex, rowIndex, name, color) {
         super(colIndex, rowIndex, name, color)
         this.isFirstMove = true
@@ -9,11 +8,22 @@ class King extends Piece {
     }
 
     findValidMove(rowList) {
-        
+        for (let rowIndex = 0 ; rowIndex < rowList.length ; ++rowIndex) {
+            let colList = rowList[rowIndex].colList
+            for (let colIndex = 0 ; colIndex < colList.length ; ++colIndex) {
+                const RowDistanceValue = Math.abs(this.rowIndex - rowIndex)
+                const ColDistanceValue = Math.abs(this.colIndex - colIndex)
+                const squareObject = rowList[rowIndex].colList[colIndex]
+                const pieceObject = squareObject.piece
+                //console.log(this.rowIndex+ " and "+ rowIndex)
+                if ((((RowDistanceValue <= 1) && (colIndex === this.colIndex) && (pieceObject === null)))||((ColDistanceValue <= 1) && (rowIndex === this.rowIndex) && (pieceObject === null))) {
+                    squareObject.squareElement.style.backgroundColor = 'red'
+                }
+            }
+            
+        }
     }
 
-=======
->>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     handleCastling(squareList) {
 
     }
@@ -22,12 +32,7 @@ class King extends Piece {
 
     }
 
-<<<<<<< HEAD
     checkRookFirstMove(squareObject) {
 
-=======
-    checkRookFirstMove(rook) {
-        
->>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
     }
 }
