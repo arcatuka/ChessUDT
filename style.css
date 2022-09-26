@@ -1,0 +1,45 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: gray;
+}
+
+#chess-board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+
+<<<<<<< HEAD
+.square:hover {
+    cursor: pointer;
+}
+
+#options-container {
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 70px;
+    background-color: #ddd;
+    width: 70px;
+    height: 280px;
+    border: 1px solid black;
+}
+
+
+#options-container img {
+    width: 70px;
+    height: 70px;
+    display: block;
+}
+
+#options-container img:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+=======
+>>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
