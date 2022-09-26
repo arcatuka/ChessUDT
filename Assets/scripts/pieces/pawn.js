@@ -1,5 +1,4 @@
 class Pawn extends Piece {
-<<<<<<< HEAD
     constructor(colIndex, rowIndex, name, color) {
         super(colIndex, rowIndex, name, color)
         this.isFirstMove = true
@@ -26,22 +25,6 @@ class Pawn extends Piece {
         }
         return squareList
     }
-=======
-    // findMove(rowList) {
-    //     for (let rowIndex = 0 ; rowIndex < rowList.length ; ++rowIndex) {
-    //         let colList = rowList[rowIndex].colList
-    //         for (let colIndex = 0 ; colIndex < colList.length ; ++colIndex) {
-    //             const rowDistanceValue = Math.abs(this.rowIndex - rowIndex)
-    //             const squareObject = rowList[rowIndex].colList[colIndex]
-    //             const pieceObject = squareObject.piece
-
-    //             if ((rowDistanceValue <= 2) && (colIndex === this.colIndex) && (pieceObject === null)) {
-    //                 squareObject.squareElement.style.backgroundColor = 'red'
-    //             }
-    //         }
-    //     }
-    // }
->>>>>>> b073ded44372bf2ce78d65478f00f6314b52e835
 
     handleLeveling(rowList) {
 
