@@ -8,6 +8,7 @@ class King extends Piece {
     }
 
     findValidMove(rowList) {
+        const squareList = []
         for (let rowIndex = 0 ; rowIndex < rowList.length ; ++rowIndex) {
             let colList = rowList[rowIndex].colList
             for (let colIndex = 0 ; colIndex < colList.length ; ++colIndex) {
@@ -16,12 +17,19 @@ class King extends Piece {
                 const squareObject = rowList[rowIndex].colList[colIndex]
                 const pieceObject = squareObject.piece
                 //console.log(this.rowIndex+ " and "+ rowIndex)
-                if ((((RowDistanceValue <= 1) && (colIndex === this.colIndex) && (pieceObject === null)))||((ColDistanceValue <= 1) && (rowIndex === this.rowIndex) && (pieceObject === null))) {
-                    squareObject.squareElement.style.backgroundColor = 'red'
+                if (((RowDistanceValue <= 1) && (colIndex === this.colIndex))||((ColDistanceValue <= 1) && (rowIndex === this.rowIndex))) {
+                    //squareObject.squareElement.style.backgroundColor = 'red'
+                    if(pieceObject === null)
+                        squareList.push(squareObject)
+                    else if(pieceObject.color =='black'){
+                        squareObject.squareElement.style.backgroundColor = 'red'
+                        //squareList.push(squareObject)
+                    }
                 }
             }
             
         }
+        return squareList
     }
 
     handleCastling(squareList) {
