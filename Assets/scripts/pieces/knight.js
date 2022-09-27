@@ -20,7 +20,7 @@ class Knight extends Piece {
                     //squareObject.squareElement.style.backgroundColor = 'red'
                     if(pieceObject === null)
                         squareList.push(squareObject)
-                    else if(pieceObject.color =='black'){
+                    else if((pieceObject.color =='black' && this.color == 'white')||(pieceObject.color =='white' && this.color == 'black')){
                         squareObject.squareElement.style.backgroundColor = 'red'
                         //squareList.push(squareObject)
                     }
