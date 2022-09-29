@@ -17,7 +17,7 @@ class King extends Piece {
                 const squareObject = rowList[rowIndex].colList[colIndex]
                 const pieceObject = squareObject.piece
                 //console.log(this.rowIndex+ " and "+ rowIndex)
-                if (((RowDistanceValue <= 1) && (colIndex === this.colIndex))||((ColDistanceValue <= 1) && (rowIndex === this.rowIndex))) {
+                if (((RowDistanceValue <= 1) && (colIndex === this.colIndex))||((ColDistanceValue <= 1) && (rowIndex === this.rowIndex)) ||((ColDistanceValue == 1) && (RowDistanceValue== 1)) ) {
                     //squareObject.squareElement.style.backgroundColor = 'red'
                     if(pieceObject === null)
                         squareList.push(squareObject)
